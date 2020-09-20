@@ -1,0 +1,10 @@
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\bin\Debug\CruciGramV1.0.exe.config
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\bin\Debug\CruciGramV1.0.exe
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\bin\Debug\CruciGramV1.0.pdb
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\obj\Debug\CruciGramV1.0.csprojResolveAssemblyReference.cache
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\obj\Debug\CruciGramV1._0.Crossword.resources
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\obj\Debug\CruciGramV1._0.CruciGram.resources
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\obj\Debug\CruciGramV1._0.Properties.Resources.resources
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\obj\Debug\CruciGramV1.0.csproj.GenerateResource.Cache
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\obj\Debug\CruciGramV1.0.exe
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\obj\Debug\CruciGramV1.0.pdb

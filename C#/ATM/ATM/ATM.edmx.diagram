@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2943a0bdd6f4b27a457cdebfb8199ea" Name="Diagram1">
+        <EntityTypeShape EntityType="ATMModel.Cliente" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.Consulta" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.Deposito" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.Gerente" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.Retiro" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.Tipo_Transaccion" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.Transaccion" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.Usuario" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="ATMModel.FK__Cliente__N_Cuent__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK__Consulta__N_Foli__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK__Deposito__N_Cuen__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK__Deposito__N_Foli__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK__Gerente__N_Cuent__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK__Retiro__N_Folio__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK__Transaccio__Tipo__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK__Transacci__N_Cue__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

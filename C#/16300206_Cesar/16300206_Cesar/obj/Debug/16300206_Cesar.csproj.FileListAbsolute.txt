@@ -1,0 +1,6 @@
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Cesar\16300206_Cesar\bin\Debug\16300206_Cesar.exe.config
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Cesar\16300206_Cesar\bin\Debug\16300206_Cesar.exe
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Cesar\16300206_Cesar\bin\Debug\16300206_Cesar.pdb
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Cesar\16300206_Cesar\obj\Debug\16300206_Cesar.exe
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Cesar\16300206_Cesar\obj\Debug\16300206_Cesar.pdb
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Cesar\16300206_Cesar\obj\Debug\16300206_Cesar.csprojResolveAssemblyReference.cache

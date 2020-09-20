@@ -1,0 +1,142 @@
+MPASM  5.06.4                  APLICACIONES.ASM   5-12-2019  15:36:25         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Error[122]  : Illegal opcode (p)
+                      00001 IST p=16f84a
+                      00002 #INCLUDE <p16f84a.inc>
+                      00001         LIST
+                      00002 ; P16F84A.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00134         LIST
+                      00003     
+                      00004   ;__config _CP_OFF & _WDT_OFF & _PWRITE_ON & _XT_OSC
+                      00005     
+                      00006     ;CP = PROTECCION DEL CODIGO
+                      00007     ;WDT OFF : PERRO GUARDIAN DEL CODIGO
+                      00008     ;PWRITE ON : PERMITE LA ACTIVACION DEL RESET POR MEDIO DE LA ALIMENTACION ESTA NEGADO
+                      00009     ;XT OSC : OSCILDOR DE CRISTAL
+                      00010     
+0000                  00011     ORG 0x00
+                      00012     
+0000   1683           00013    BSF STATUS, RP0 ;ACCEDEMOS AL BANCO 1 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0001   1405           00014     BSF TRISA, 0 ;permite la configuracion como entrada o salida
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   1485           00015     BSF TRISA, 1 ;Se configura como entrada en el pin 0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   1006           00016     BCF TRISB, 0;Se configura el puerto b como salida en el pin 0
+0004   1283           00017     BCF STATUS, RP0; Se devuelve al banco 0
+0005   1006           00018     BCF PORTB, 0 ;Inicia el puerto b en el pin 0 como apagado 
+                      00019     
+                      00020     ;INICIO DEL PROGRAMA ------
+                      00021     
+Warning[207]: Found label after column 1. (ENCENDER)
+0006                  00022     ENCENDER
+Warning[207]: Found label after column 1. (BTFAS)
+Error[122]  : Illegal opcode (PORTA)
+0006                  00023         BTFAS PORTA, 0 ;Pregunta por un 1 en el puerto a en el pin 0 
+0006   2806           00024         GOTO ENCENDER ; Se regresa hasta que haya un 1
+0007   1406           00025         BSF PORTB, 0 ; Si se cumplio la opcion ENCENDER  mandara un 1  al puerto b en el pin 0 
+                      00026         
+0008                  00027 estado
+Warning[207]: Found label after column 1. (BTFAS)
+Error[122]  : Illegal opcode (PORTA)
+0008                  00028         BTFAS PORTA, 1 ; PREGUNTA POR UN 1 EN EL PUERTO A EN EL PIN 1 
+0008   2808           00029         GOTO estado ;si es falso va a estado
+0009   1006           00030         BCF PORTB, 0 ; Si es verdadero coloca un 0 en el puerto b en el pin 0
+000A   2806           00031         GOTO ENCENDER ;Se retorna a encener
+                      00032 
+Warning[205]: Found directive in column 1. (END)
+                      00033 END
+MPASM  5.06.4                  APLICACIONES.ASM   5-12-2019  15:36:25         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+ENCENDER                          00000006
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+MPASM  5.06.4                  APLICACIONES.ASM   5-12-2019  15:36:25         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+estado                            00000008
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXX----- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    11
+Program Memory Words Free:  1013
+
+
+Errors   :     3
+Warnings :     4 reported,     0 suppressed
+Messages :     3 reported,     0 suppressed
+
+Error[173]  : Source file path exceeds 62 characters (C:\USERS\CARLO\DESKTOP\CARLO CETI\ARQUITECTURA DE COMPUTADORAS\PIC\APLICACIONE
+                            S.ASM)

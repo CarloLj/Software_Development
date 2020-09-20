@@ -1,0 +1,626 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Jun 18, 2019 at 02:14 AM
+-- Server version: 5.6.44-log
+-- PHP Version: 5.6.40
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `c0860121_cerve`
+--
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`c0860121`@`%` PROCEDURE `DireccionesUsuario` (`‘p_id’` INT)  SELECT cliente.correo,cliente.Nombre, cliente.apellido, direccion.id, direccion.Colonia, direccion.calle FROM cliente INNER JOIN direccion ON cliente.id = direccion.idcliente
+WHERE cliente.id =  ‘p_id’$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `id` smallint(6) NOT NULL,
+  `Correo` varchar(40) DEFAULT NULL,
+  `Contraseña` varchar(40) DEFAULT NULL,
+  `Nombre` varchar(40) DEFAULT NULL,
+  `Apellido` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `Correo`, `Contraseña`, `Nombre`, `Apellido`) VALUES
+(39, 'carlouxljlj@gmail.com', '123456', 'Carlo', 'Lujan'),
+(40, '12245@gmail', 'hola', 'Mauricio', 'Lujan'),
+(42, 'pancho@gmail', 'holamundo', 'pancho', 'lopez'),
+(47, 'Cristopher@gmail.com', '1234', 'Cristopher', 'Ceja '),
+(48, 'fabio@gmail.com', '1234', 'Fabio', 'Lujan'),
+(51, 'sergii@gmail.com', 'sergioselacome', 'Sergio', 'Sabe'),
+(52, 'fabio1245@hotmail.com', 'fabiox35', 'fabio', 'lujan'),
+(54, 'cristopher.ceja.731@gmail.com', 'Roblox.tiddies', 'Cristopher', 'Ceja'),
+(56, 'hola', 'probandodesdemicelular', 'sirveono', 'ruegoquesi'),
+(57, 'mfarfan', '12345', 'Mauricio', 'Farfan'),
+(60, 'kuribeirut@gmail.com', 'alfredo123', 'alfredo', 'kuri'),
+(61, 'msoto@ceti.mx', 'qwerty', 'mario', 'soto'),
+(66, 'C', 'B', 'A', 'A'),
+(67, 'andresperez1024@gmail.com', '123', 'Mauricio', 'Flores');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `cliente_2021`
+-- (See below for the actual view)
+--
+CREATE TABLE `cliente_2021` (
+`nombre` varchar(40)
+,`apellido` varchar(40)
+,`id` smallint(6)
+,`numerotarjeta` varchar(16)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `direccion`
+--
+
+CREATE TABLE `direccion` (
+  `id` smallint(6) NOT NULL,
+  `Nombredest` varchar(40) DEFAULT NULL,
+  `Apellidodest` varchar(40) DEFAULT NULL,
+  `Telefono` varchar(10) DEFAULT NULL,
+  `Codigopostal` varchar(5) DEFAULT NULL,
+  `Colonia` varchar(40) DEFAULT NULL,
+  `Calle` varchar(40) DEFAULT NULL,
+  `Numeroext` smallint(6) DEFAULT NULL,
+  `Numeroint` smallint(6) DEFAULT NULL,
+  `Referencias` varchar(40) DEFAULT NULL,
+  `idcliente` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `direccion`
+--
+
+INSERT INTO `direccion` (`id`, `Nombredest`, `Apellidodest`, `Telefono`, `Codigopostal`, `Colonia`, `Calle`, `Numeroext`, `Numeroint`, `Referencias`, `idcliente`) VALUES
+(1, 'Pancho', 'Lopez', '3322512297', '45133', 'Mision del Bosque', 'Paseo de las aves 2220', 13, 0, 'Entre rio blanco y paseo de las aves', 42),
+(2, 'Carlo', 'Lujan', '3313232038', '45130', 'Parques del centinela', 'Av Rio blanco', 567, 0, 'Entre rio blanco', 39),
+(7, 'Farfan', 'Lopez', '3454432345', '45600', 'Mision de los cerezos', 'hamsters locos', 13, 0, 'Entre cuyo 110 y paloma 32', 57),
+(8, 'Cristopher', 'Ceja', '3456564565', '45678', 'Mision del platano', 'monos locos', 239, 0, 'En la mera entrada', 54),
+(9, 'Sergio', 'Sabe', '4567898721', '34567', 'Bosque loco', 'Encino verde 22', 345, 0, 'Entre la avenida y la calle', 51),
+(10, 'Fabio', 'Lujan', '2233445566', '23456', 'Paseo de los fresnos', 'La calle', 1112, 0, 'Entre la avenida y la otra avenida', 52);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `envio`
+--
+
+CREATE TABLE `envio` (
+  `id` smallint(6) NOT NULL,
+  `paqueteria` varchar(20) DEFAULT NULL,
+  `costo` smallint(6) DEFAULT NULL,
+  `enviado` tinyint(1) DEFAULT NULL,
+  `fechaenvio` datetime DEFAULT NULL,
+  `fechaestimada` datetime DEFAULT NULL,
+  `iddomicilio` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `envio`
+--
+
+INSERT INTO `envio` (`id`, `paqueteria`, `costo`, `enviado`, `fechaenvio`, `fechaestimada`, `iddomicilio`) VALUES
+(1, 'DHL', 145, 1, '2019-06-17 19:37:52', '2019-06-17 19:49:02', 1),
+(2, 'DHL', 145, 1, '0000-00-00 00:00:00', '2019-06-17 19:49:02', 2),
+(3, 'DHL', 145, 1, '0000-00-00 00:00:00', '2019-06-17 19:49:02', 2),
+(5, 'DHL', 145, 1, '2019-06-17 19:38:32', '0000-00-00 00:00:00', 1),
+(6, 'DHL', 145, 1, '2019-06-17 19:38:42', '0000-00-00 00:00:00', 2),
+(7, 'DHL', 145, 1, '2019-06-17 19:38:52', '0000-00-00 00:00:00', 2),
+(9, 'DHL', 145, 1, '2019-06-17 19:39:31', '2019-06-17 19:39:31', 1),
+(10, 'DHL', 145, 1, '2019-06-17 19:39:31', '2019-06-17 19:39:31', 2),
+(11, 'DHL', 145, 1, '2019-06-17 19:39:31', '2019-06-17 19:39:31', 2),
+(13, 'DHL', 145, 1, '2019-06-17 19:39:50', '2019-06-17 19:39:50', 1),
+(14, 'DHL', 145, 1, '2019-06-17 19:39:50', '2019-06-17 19:39:50', 2),
+(15, 'DHL', 145, 1, '2019-06-17 19:39:50', '2019-06-17 19:39:50', 2),
+(16, 'ESTAFETA', 200, 1, '2019-06-17 19:39:50', '2019-06-17 19:39:50', 2),
+(18, 'DHL', 145, 1, '2019-06-17 19:40:07', '2019-06-17 19:40:07', 1),
+(19, 'DHL', 145, 1, '2019-06-17 19:40:07', '2019-06-17 19:40:07', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `factura`
+--
+
+CREATE TABLE `factura` (
+  `id` smallint(6) NOT NULL,
+  `estado` varchar(20) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `preciototal` int(11) DEFAULT NULL,
+  `idproveedor` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `factura`
+--
+
+INSERT INTO `factura` (`id`, `estado`, `fecha`, `preciototal`, `idproveedor`) VALUES
+(1, 'Jalisco', '2019-06-16 00:00:00', 30000, 1),
+(2, 'Jalisco', '2019-06-16 00:00:00', 3400, 5),
+(3, 'Aguascalientes', '2019-06-16 00:00:00', 2345, 4),
+(4, 'Guerrero', '2019-06-16 00:00:00', 12345, 3),
+(5, 'Jalisco', '2019-06-16 00:00:00', 67000, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itemfactura`
+--
+
+CREATE TABLE `itemfactura` (
+  `id` smallint(6) NOT NULL,
+  `cantidad` tinyint(4) DEFAULT NULL,
+  `descuento` tinyint(4) DEFAULT NULL,
+  `subtotal` int(11) DEFAULT NULL,
+  `idfactura` smallint(6) DEFAULT NULL,
+  `idproducto` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `itemfactura`
+--
+
+INSERT INTO `itemfactura` (`id`, `cantidad`, `descuento`, `subtotal`, `idfactura`, `idproducto`) VALUES
+(1, 50, 50, 15000, 1, 1),
+(2, 127, 50, 1700, 2, 1),
+(3, 15, 0, 2345, 3, 1),
+(4, 127, 0, 12345, 4, 2),
+(5, 127, 50, 33500, 5, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itemorden`
+--
+
+CREATE TABLE `itemorden` (
+  `id` smallint(6) NOT NULL,
+  `cantidad` tinyint(4) DEFAULT NULL,
+  `descuento` tinyint(4) DEFAULT NULL,
+  `subtotal` int(20) DEFAULT NULL,
+  `idproducto` smallint(6) DEFAULT NULL,
+  `idorden` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orden`
+--
+
+CREATE TABLE `orden` (
+  `id` smallint(6) NOT NULL,
+  `estado` varchar(20) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `preciototal` int(11) DEFAULT NULL,
+  `idpago` smallint(6) DEFAULT NULL,
+  `idcliente` smallint(6) DEFAULT NULL,
+  `idenvio` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orden`
+--
+
+INSERT INTO `orden` (`id`, `estado`, `fecha`, `preciototal`, `idpago`, `idcliente`, `idenvio`) VALUES
+(1, 'Aguascalientes', '2019-06-17 19:57:55', 1, 2, 42, 1),
+(2, 'Jalisco', '2019-06-17 19:57:55', 23, 2, 39, 1),
+(3, 'Aguascalientes', '2019-06-17 19:57:55', 23, 2, 39, 1),
+(4, 'Jalisco', '2019-06-17 19:57:55', 23, 2, 42, 1),
+(5, 'Jalisco', '2019-06-17 19:57:55', 23, 2, 39, 1),
+(6, 'Jalisco', '2019-06-17 19:57:55', 23, 2, 42, 1),
+(7, 'Aguascalientes', '2019-06-17 19:57:55', 23, 2, 39, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pago`
+--
+
+CREATE TABLE `pago` (
+  `id` smallint(6) NOT NULL,
+  `comision` smallint(6) DEFAULT NULL,
+  `pagado` tinyint(1) DEFAULT NULL,
+  `fechapago` datetime DEFAULT NULL,
+  `idtarjeta` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pago`
+--
+
+INSERT INTO `pago` (`id`, `comision`, `pagado`, `fechapago`, `idtarjeta`) VALUES
+(1, 0, 1, '2019-06-17 19:49:50', 1),
+(2, 0, 127, '2019-06-17 19:49:50', 2),
+(3, 0, 127, '2019-06-17 19:49:50', 1),
+(4, 0, 88, '2019-06-17 19:49:50', 2),
+(5, 0, 56, '2019-06-17 19:49:50', 1),
+(6, 0, 44, '2019-06-17 19:49:50', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paquete`
+--
+
+CREATE TABLE `paquete` (
+  `id` smallint(6) NOT NULL,
+  `numerotracking` varchar(12) DEFAULT NULL,
+  `idorden` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `producto`
+--
+
+CREATE TABLE `producto` (
+  `id` smallint(6) NOT NULL,
+  `concepto` varchar(40) DEFAULT NULL,
+  `preciolista` int(11) DEFAULT NULL,
+  `marca` varchar(20) DEFAULT NULL,
+  `ml` smallint(6) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `imagen` varchar(100) DEFAULT NULL,
+  `sabor` varchar(20) DEFAULT NULL,
+  `tipo` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `producto`
+--
+
+INSERT INTO `producto` (`id`, `concepto`, `preciolista`, `marca`, `ml`, `descripcion`, `imagen`, `sabor`, `tipo`) VALUES
+(1, 'Cerveza', 15, 'Tecate', 355, 'cerveza barata para paladares poco exigentes, deliciosa', 'https://i.imgur.com/4IKsVMI.jpg', 'Clasico', 'Normal'),
+(2, 'Cerveza', 16, 'Tecate', 355, 'cerveza barata light para paladares poco exigentes, deliciosa', 'https://i.imgur.com/4IKsVMI.jpg', 'Clasico', 'Normal'),
+(3, 'Vino', 133, 'Riunite', 650, 'vino de baja calidad, bastante bueno', 'https://i.imgur.com/4IKsVMI.jpg', 'Clasico', 'Tinto'),
+(4, 'Vino', 135, 'Riunite', 650, 'vino blanco', 'https://i.imgur.com/4IKsVMI.jpg', 'Clasico', 'Blanco'),
+(5, 'Cerveza', 17, 'Indio', 355, 'cerveza barata para paladares poco exigentes, deliciosa', 'https://i.imgur.com/4IKsVMI.jpg', 'Clasico', 'Normal');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proveedor`
+--
+
+CREATE TABLE `proveedor` (
+  `id` smallint(6) NOT NULL,
+  `nombre` varchar(40) DEFAULT NULL,
+  `correo` varchar(40) DEFAULT NULL,
+  `telefono` varchar(10) DEFAULT NULL,
+  `codigopostal` varchar(5) DEFAULT NULL,
+  `colonia` varchar(40) DEFAULT NULL,
+  `calle` varchar(40) DEFAULT NULL,
+  `número` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `proveedor`
+--
+
+INSERT INTO `proveedor` (`id`, `nombre`, `correo`, `telefono`, `codigopostal`, `colonia`, `calle`, `número`) VALUES
+(1, 'Tecate', 'tecate@gmail.com', '3334343434', '45678', 'Mision de las cervezas', 'manguito', 101),
+(2, 'Chapultepec', 'Chapultepec@gmail.com', '3334322434', '45578', 'Mision de las gaviotas', 'manguito', 102),
+(3, 'Indio', 'Indio@gmail.com', '3322567890', '45678', 'Mision de los vinos', 'arandanito', 1),
+(4, 'Dosequis', 'Dosequis@gmail.com', '6789890767', '43648', 'Las lomas', 'lomudo', 11),
+(5, 'Riunite', 'Riunite@gmail.com', '3322526789', '42578', 'las cervezas', 'trololo', 89);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tarjeta`
+--
+
+CREATE TABLE `tarjeta` (
+  `id` smallint(6) NOT NULL,
+  `Nombretarjeta` varchar(40) DEFAULT NULL,
+  `Numerotarjeta` varchar(16) DEFAULT NULL,
+  `Fechavencimiento` date DEFAULT NULL,
+  `CCV` varchar(3) DEFAULT NULL,
+  `idcliente` smallint(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tarjeta`
+--
+
+INSERT INTO `tarjeta` (`id`, `Nombretarjeta`, `Numerotarjeta`, `Fechavencimiento`, `CCV`, `idcliente`) VALUES
+(1, 'TARJETAPRUEBA', '3456789012344321', '2020-02-02', '330', 42),
+(2, 'mitarjeta', '4567234545675432', '2021-01-01', '567', 39);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `TECATE`
+-- (See below for the actual view)
+--
+CREATE TABLE `TECATE` (
+`id` smallint(6)
+,`marca` varchar(20)
+,`preciolista` int(11)
+,`descripcion` varchar(255)
+,`sabor` varchar(20)
+,`tipo` varchar(20)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `cliente_2021`
+--
+DROP TABLE IF EXISTS `cliente_2021`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`c0860121`@`%` SQL SECURITY DEFINER VIEW `cliente_2021`  AS  select `cliente`.`Nombre` AS `nombre`,`cliente`.`Apellido` AS `apellido`,`tarjeta`.`id` AS `id`,`tarjeta`.`Numerotarjeta` AS `numerotarjeta` from (`cliente` join `tarjeta` on((`cliente`.`id` = `tarjeta`.`idcliente`))) where (`tarjeta`.`Fechavencimiento` = '2021-01-01') ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `TECATE`
+--
+DROP TABLE IF EXISTS `TECATE`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`c0860121`@`%` SQL SECURITY DEFINER VIEW `TECATE`  AS  select `producto`.`id` AS `id`,`producto`.`marca` AS `marca`,`producto`.`preciolista` AS `preciolista`,`producto`.`descripcion` AS `descripcion`,`producto`.`sabor` AS `sabor`,`producto`.`tipo` AS `tipo` from `producto` where (`producto`.`marca` = 'TECATE') ;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `direccion`
+--
+ALTER TABLE `direccion`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idcliente` (`idcliente`);
+
+--
+-- Indexes for table `envio`
+--
+ALTER TABLE `envio`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `iddomicilio` (`iddomicilio`);
+
+--
+-- Indexes for table `factura`
+--
+ALTER TABLE `factura`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idproveedor` (`idproveedor`);
+
+--
+-- Indexes for table `itemfactura`
+--
+ALTER TABLE `itemfactura`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idfactura` (`idfactura`),
+  ADD KEY `idproducto` (`idproducto`);
+
+--
+-- Indexes for table `itemorden`
+--
+ALTER TABLE `itemorden`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idproducto` (`idproducto`),
+  ADD KEY `idorden` (`idorden`);
+
+--
+-- Indexes for table `orden`
+--
+ALTER TABLE `orden`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idpago` (`idpago`),
+  ADD KEY `idcliente` (`idcliente`),
+  ADD KEY `idenvio` (`idenvio`);
+
+--
+-- Indexes for table `pago`
+--
+ALTER TABLE `pago`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idtarjeta` (`idtarjeta`);
+
+--
+-- Indexes for table `paquete`
+--
+ALTER TABLE `paquete`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idorden` (`idorden`);
+
+--
+-- Indexes for table `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tarjeta`
+--
+ALTER TABLE `tarjeta`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idcliente` (`idcliente`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT for table `direccion`
+--
+ALTER TABLE `direccion`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `envio`
+--
+ALTER TABLE `envio`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `factura`
+--
+ALTER TABLE `factura`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `itemfactura`
+--
+ALTER TABLE `itemfactura`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `itemorden`
+--
+ALTER TABLE `itemorden`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `orden`
+--
+ALTER TABLE `orden`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `pago`
+--
+ALTER TABLE `pago`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `paquete`
+--
+ALTER TABLE `paquete`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `proveedor`
+--
+ALTER TABLE `proveedor`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tarjeta`
+--
+ALTER TABLE `tarjeta`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `direccion`
+--
+ALTER TABLE `direccion`
+  ADD CONSTRAINT `direccion_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`);
+
+--
+-- Constraints for table `envio`
+--
+ALTER TABLE `envio`
+  ADD CONSTRAINT `envio_ibfk_1` FOREIGN KEY (`iddomicilio`) REFERENCES `direccion` (`id`);
+
+--
+-- Constraints for table `factura`
+--
+ALTER TABLE `factura`
+  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`idproveedor`) REFERENCES `proveedor` (`id`);
+
+--
+-- Constraints for table `itemfactura`
+--
+ALTER TABLE `itemfactura`
+  ADD CONSTRAINT `itemfactura_ibfk_1` FOREIGN KEY (`idfactura`) REFERENCES `factura` (`id`),
+  ADD CONSTRAINT `itemfactura_ibfk_2` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`id`);
+
+--
+-- Constraints for table `itemorden`
+--
+ALTER TABLE `itemorden`
+  ADD CONSTRAINT `itemorden_ibfk_1` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`id`),
+  ADD CONSTRAINT `itemorden_ibfk_2` FOREIGN KEY (`idorden`) REFERENCES `orden` (`id`);
+
+--
+-- Constraints for table `orden`
+--
+ALTER TABLE `orden`
+  ADD CONSTRAINT `orden_ibfk_1` FOREIGN KEY (`idpago`) REFERENCES `pago` (`id`),
+  ADD CONSTRAINT `orden_ibfk_2` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`),
+  ADD CONSTRAINT `orden_ibfk_3` FOREIGN KEY (`idenvio`) REFERENCES `envio` (`id`);
+
+--
+-- Constraints for table `pago`
+--
+ALTER TABLE `pago`
+  ADD CONSTRAINT `pago_ibfk_1` FOREIGN KEY (`idtarjeta`) REFERENCES `tarjeta` (`id`);
+
+--
+-- Constraints for table `paquete`
+--
+ALTER TABLE `paquete`
+  ADD CONSTRAINT `paquete_ibfk_1` FOREIGN KEY (`idorden`) REFERENCES `orden` (`id`);
+
+--
+-- Constraints for table `tarjeta`
+--
+ALTER TABLE `tarjeta`
+  ADD CONSTRAINT `tarjeta_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

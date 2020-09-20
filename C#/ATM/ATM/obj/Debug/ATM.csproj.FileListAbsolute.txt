@@ -1,0 +1,47 @@
+C:\Users\usuario\Desktop\ATM\ATM\bin\Debug\ATM.exe.config
+C:\Users\usuario\Desktop\ATM\ATM\bin\Debug\ATM.exe
+C:\Users\usuario\Desktop\ATM\ATM\bin\Debug\ATM.pdb
+C:\Users\usuario\Desktop\ATM\ATM\obj\Debug\ATM.csprojResolveAssemblyReference.cache
+C:\Users\usuario\Desktop\ATM\ATM\obj\Debug\ATM.exe
+C:\Users\usuario\Desktop\ATM\ATM\obj\Debug\ATM.pdb
+D:\ATM\ATM\bin\Debug\ATM.exe.config
+D:\ATM\ATM\bin\Debug\ATM.exe
+D:\ATM\ATM\bin\Debug\ATM.pdb
+D:\ATM\ATM\obj\Debug\ATM.csprojAssemblyReference.cache
+D:\ATM\ATM\obj\Debug\ATM.csproj.CoreCompileInputs.cache
+D:\ATM\ATM\obj\Debug\ATM.exe
+D:\ATM\ATM\obj\Debug\ATM.pdb
+C:\Angel\CETI\Progra avanzada\ATM\ATM\bin\Debug\ATM.exe.config
+C:\Angel\CETI\Progra avanzada\ATM\ATM\bin\Debug\ATM.exe
+C:\Angel\CETI\Progra avanzada\ATM\ATM\bin\Debug\ATM.pdb
+C:\Angel\CETI\Progra avanzada\ATM\ATM\obj\Debug\ATM.csprojAssemblyReference.cache
+C:\Angel\CETI\Progra avanzada\ATM\ATM\obj\Debug\ATM.csproj.CoreCompileInputs.cache
+C:\Angel\CETI\Progra avanzada\ATM\ATM\obj\Debug\ATM.exe
+C:\Angel\CETI\Progra avanzada\ATM\ATM\obj\Debug\ATM.pdb
+C:\Angel\CETI\Progra avanzada\ATM\ATM\bin\Debug\EntityFramework.dll
+C:\Angel\CETI\Progra avanzada\ATM\ATM\bin\Debug\EntityFramework.SqlServer.dll
+C:\Angel\CETI\Progra avanzada\ATM\ATM\bin\Debug\EntityFramework.xml
+C:\Angel\CETI\Progra avanzada\ATM\ATM\bin\Debug\EntityFramework.SqlServer.xml
+C:\Angel\CETI\Progra avanzada\ATM\ATM\obj\Debug\ATM.csproj.CopyComplete
+D:\PROGRAMACION AVANZADA\ATM\ATM\bin\Debug\ATM.exe.config
+D:\PROGRAMACION AVANZADA\ATM\ATM\bin\Debug\ATM.exe
+D:\PROGRAMACION AVANZADA\ATM\ATM\bin\Debug\ATM.pdb
+D:\PROGRAMACION AVANZADA\ATM\ATM\bin\Debug\EntityFramework.dll
+D:\PROGRAMACION AVANZADA\ATM\ATM\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROGRAMACION AVANZADA\ATM\ATM\bin\Debug\EntityFramework.xml
+D:\PROGRAMACION AVANZADA\ATM\ATM\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROGRAMACION AVANZADA\ATM\ATM\obj\Debug\ATM.csproj.CoreCompileInputs.cache
+D:\PROGRAMACION AVANZADA\ATM\ATM\obj\Debug\ATM.csproj.CopyComplete
+D:\PROGRAMACION AVANZADA\ATM\ATM\obj\Debug\ATM.exe
+D:\PROGRAMACION AVANZADA\ATM\ATM\obj\Debug\ATM.pdb
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\bin\Debug\ATM.exe.config
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\bin\Debug\ATM.exe
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\bin\Debug\ATM.pdb
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\bin\Debug\EntityFramework.dll
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\bin\Debug\EntityFramework.xml
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\obj\Debug\ATM.csprojAssemblyReference.cache
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\obj\Debug\ATM.csproj.CopyComplete
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\obj\Debug\ATM.exe
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\ATM\ATM\obj\Debug\ATM.pdb

@@ -1,0 +1,259 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace CruciGramV1._0
+{
+    public partial class Crossword : Form
+    {
+        int contadrr; //ES GLOBAL PORQUE GUARDA EL NUMERO DE VISUALES AGREGADOS AL FORM DINAMICAMENTE
+
+        public class Palabra
+        {
+            public int Dificultad = 0;
+            public bool orientacion;
+            public bool activo;
+            public string sPalabra;
+            public string sDefinicion;
+            public int nXCoordenadaInicio = 0;
+            public int nXCoordenadaFin = 0;
+            public int nYCoordenadaInicio = 0;
+            public int nYCoordenadaFin = 0;
+            //void Palabra(int a, bool b, char palabra[]);
+        }
+
+        public Crossword(int x)
+        {
+            Palabra constructor = new Palabra();
+            Random random = new Random();
+            InitializeComponent();
+            switch (x)
+            {
+                case 1:
+                    labeldificultad.Text = "Facil";
+                    x = 4;
+                    break;
+
+                case 2:
+                    labeldificultad.Text = "Medio";
+                    int randomNumber = random.Next(6, 8);
+                    x = randomNumber;
+                    break;
+                    
+
+                case 3:
+                    labeldificultad.Text = "Dificil";
+                    int randomNumber1 = random.Next(9, 19);
+                    x = randomNumber1;
+                    break;
+
+                default:break;
+            }
+            generarCrucigramas(x);
+            x = 0;
+        }
+
+        private void Crossword_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void generarCrucigramas(int difficulty)
+        {
+            Palabra[] aPalabra = new Palabra[100]; //Generamos un arreglo de objetos palabra
+            int[] nNumerosUsados = new int[100];
+            int tamaño = 0, x = 300, y = 200, conteo = 1, labels = 1, h = 1,v=0,vv=0, difficulty_=difficulty, apuntador=1; //variables en uso
+            int indice = 0; //Numero total de palabras
+            List<string> listaUsados = new List<string>();
+            
+            ///////////////////////////////////LEEMOS NUESTRO ARCHIVO DE TEXTO Y GUARDAMOS TODOS SUS ATRIBUTOS EN EL ARREGLO DE OBJETO PALABRA//////////////////////////
+            using (StreamReader leer = new StreamReader(@"C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\Resources\diccionario.txt"))
+            {
+                while (!leer.EndOfStream) //lo repetira hasta el final del archivo
+                {
+                    string str = leer.ReadLine();
+                    String[] separator = { "," }; //Aqui definimos el separador
+                    Int32 count = 3; //Contamos 3 separaciones para ejecutar el stringlist
+                    String[] strlist = str.Split(separator, count, StringSplitOptions.RemoveEmptyEntries); //Partimos el string leido anteriormente
+                    /////////////////////////////SE LEEN LAS palabras, definicion y dificultad Y SE GUARDAN POR UN INDICE//////////////////////////////
+                    aPalabra[indice] = new Palabra();
+                    aPalabra[indice].sPalabra = strlist[0]; //Guardamos el atributo palabra en el arreglo de palabras en la posicion indice
+                    aPalabra[indice].sDefinicion = strlist[1]; //Guardamos el atributo defnicion en el arreglo de palabras en la posicion indice
+                    aPalabra[indice].Dificultad = Int32.Parse(strlist[2]); //Guardamos el atributo dificultad en el arreglo de palabras en la posicion indice
+                    aPalabra[indice].activo = false; //Definimos la orientacion por defecto en horizontal false = horizontal true = vertical
+                    indice++; //Incrementamos el indice para ir guardando palabra por palabra leida
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                }
+                leer.Close(); //Cerramos la apertura del diccionario
+            }
+
+           
+            Random random = new Random();
+            for (int r = 0; r < indice; r++)
+            {
+                int randomNumber = random.Next(0, indice+1);//GENERAMOS UN NUMERO RANDOM ENTRE 1 Y EL ULTIMO VALOR DE INDICE DE NUESTRO DICCIONARIO
+                if (!nNumerosUsados.Contains(randomNumber)) //SI CONTIENE EL NUMERO RANDOM NO REPETIDO EN ALGUNA POSICION ENTRA AQUI
+                {
+                    nNumerosUsados[r] = randomNumber; //GUARDAMOS EL NUMERO EN EL ARREGLO DE LOS NUMEROS A USAR
+                }
+                else //SI CONTIENE EL NUMERO RANDOM REPETIDO EN ALGUNA POSICION ENTRA AQUI Y REGRESA HASTA QUE YA NO SE REPITA
+                {
+                    r--;
+                }
+            }
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<AQUI GENERAMOS TODOS LOS TEXTBOX GRAFICOS DE ACUERDO A LA DIFICULTAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            for (int nGraphics = 0; nGraphics <= difficulty_; nGraphics++)
+            {
+                if (apuntador == 1) //SOLO SIRVE LA PRIMERA VEZ AL CREAR Y SE AGREGA A LA LISTA DE USADOS, ADEMAS DE QUE INICIA EN 300,300 TAMBIEN ES HORIZONTAL SIEMPRE PORQUE QUIERO JAJAJ
+                {
+                    tamaño = aPalabra[(nNumerosUsados[nGraphics]) -1 ].sPalabra.Length; //Se lee el tamaño de la palabra que se selecciono en la pos 0 
+                    listaUsados.Add("" + aPalabra[(nNumerosUsados[nGraphics]) -1 ]); //Añadimos directamente a la lista con el indice 0
+                }
+                if (apuntador == 2)
+                {
+                    tamaño = aPalabra[(nNumerosUsados[nGraphics]) -1 ].sPalabra.Length; //Se lee el tamaño de la palabra que se selecciono en la pos 1
+                    listaUsados.Add("" + aPalabra[(nNumerosUsados[nGraphics]) -1 ]); //Añadimos directamente a la lista con el indice 1
+                    aPalabra[(nNumerosUsados[nGraphics]) -1 ].orientacion = true; //Lo ponemos en vertical
+                }
+                if(apuntador > 2 ){
+                    tamaño = aPalabra[(nNumerosUsados[nGraphics]) - 1].sPalabra.Length; //Se lee el tamaño de la palabra que se selecciono en la pos x
+                    if (random.Next(0, 2) != 0) //Generamos si sera vertical u horizontal
+                    {
+                        aPalabra[(nNumerosUsados[nGraphics]) -1 ].orientacion = true;
+                    }
+                    listaUsados.Add("" + aPalabra[(nNumerosUsados[nGraphics]) - 1]); //Añadimos directamente a la lista con el indice apuntador
+                }
+
+
+                if (aPalabra[(nNumerosUsados[nGraphics]) -1 ].orientacion == true) //SI LA ORIENTACION ES TRUE SIGNIFICA QUE ES VERTICAL
+                {
+                    for (int a = 0; a < tamaño; a++)
+                    {
+                        aPalabra[(nNumerosUsados[nGraphics]) -1 ].nXCoordenadaInicio = (x);
+                        aPalabra[(nNumerosUsados[nGraphics]) -1 ].nYCoordenadaInicio = (y);
+                        TextBox letra = new TextBox();
+                        letra.Width = 15;
+                        letra.Height = 15;
+                        letra.Location = new Point(aPalabra[(nNumerosUsados[nGraphics]) -1 ].nXCoordenadaInicio, aPalabra[(nNumerosUsados[nGraphics]) -1 ].nYCoordenadaInicio);
+                        letra.Text = "" + aPalabra[(nNumerosUsados[nGraphics]) -1 ].sPalabra[a];
+                        letra.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                        letra.Name = "textBox" + contadrr.ToString();
+                        panel1.Controls.Add(letra);
+                        contadrr++;
+                        y += 15;
+                    }
+                    x += 15;
+                    Label descripcion = new Label();
+                    descripcion.Width = 250;
+                    descripcion.Height = 15;
+                    descripcion.Location = new Point(1, vv);
+                    descripcion.Text = nGraphics + 1 + ".- " + aPalabra[(nNumerosUsados[nGraphics]) -1 ].sDefinicion;
+                    descripcion.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                    descripcion.Name = "label" + labels.ToString();
+                    panel3.Controls.Add(descripcion);
+                    labels++;
+                    vv += 15;
+                    listaUsados.Add("" + aPalabra[(nNumerosUsados[nGraphics]) - 1]); //Añadimos directamente a la lista con el indice apuntador
+                    apuntador++;
+                }
+
+
+
+                if (aPalabra[(nNumerosUsados[nGraphics]) -1 ].orientacion == false) //SI LA ORIENTACION ES FALSE SIGNIFICA QUE ES HORIZONTAL
+                {
+
+                    if (nGraphics == 0)
+                    {
+                        for (int a = 0; a < tamaño; a++)
+                        {
+                            aPalabra[(nNumerosUsados[nGraphics]) - 1].nXCoordenadaInicio = (x);
+                            aPalabra[(nNumerosUsados[nGraphics]) - 1].nYCoordenadaInicio = (y);
+                            TextBox letra = new TextBox();
+                            letra.Width = 15;
+                            letra.Height = 15;
+                            letra.Location = new Point(aPalabra[(nNumerosUsados[nGraphics]) - 1].nXCoordenadaInicio, aPalabra[(nNumerosUsados[nGraphics]) - 1].nYCoordenadaInicio);
+                            letra.Text = "" + aPalabra[(nNumerosUsados[nGraphics]) - 1].sPalabra[a];
+                            letra.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                            letra.Name = "textBox" + contadrr.ToString();
+                            panel1.Controls.Add(letra);
+                            contadrr++;
+                            x += 15;
+                        }
+                    }
+                    else
+                    {
+                        int tamañoAnterior = aPalabra[(nNumerosUsados[(nGraphics - 1)] - 1)].sPalabra.Length;
+                       /*
+                        for(int letra=0; letra < sPalabraActual.Length() ; letra++)
+                        {
+                            for(int letraSiguiente= 0 ; letraSiguiente < (nNumerosUsados[nGraphics] -1 ); letraSiguiente++)
+                            { 
+                                if (letra == letraSiguiente)
+                                {
+                                    //y += 15;
+                                }
+                            }
+                            //x += 15;
+                        }
+                        */
+
+                        for (int a = 0; a < tamaño; a++) //Se repetira el proceso de creacion de textbox hasta que encuentre la letra igual
+                        {
+                            for (int aa = 0; aa < tamañoAnterior;  aa++)//Se repite letra por letra de acuerdo a la letra por letra de la palabra anterior
+                            {
+                                if (aPalabra[(nNumerosUsados[nGraphics - 1]) - 1].sPalabra[aa] == aPalabra[(nNumerosUsados[nGraphics]) - 1].sPalabra[a])
+                                {
+                                }
+                            }
+                            aPalabra[(nNumerosUsados[nGraphics]) - 1].nXCoordenadaInicio = (x);
+                            aPalabra[(nNumerosUsados[nGraphics]) - 1].nYCoordenadaInicio = (y);
+                            TextBox letra = new TextBox();
+                            letra.Width = 15;
+                            letra.Height = 15;
+                            letra.Location = new Point(aPalabra[(nNumerosUsados[nGraphics]) - 1].nXCoordenadaInicio, aPalabra[(nNumerosUsados[nGraphics]) - 1].nYCoordenadaInicio);
+                            letra.Text = "" + aPalabra[(nNumerosUsados[nGraphics]) - 1].sPalabra[a];
+                            letra.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                            letra.Name = "textBox" + contadrr.ToString();
+                            panel1.Controls.Add(letra);
+                            contadrr++;
+                            x += 15;
+                        }
+                        y += 15;
+                    }
+                    Label descripcion = new Label();
+                    descripcion.Width = 250;
+                    descripcion.Height = 15;
+                    descripcion.Location = new Point(1, v);
+                    descripcion.Text = nGraphics+1 + ".- " + aPalabra[(nNumerosUsados[nGraphics]) -1 ].sDefinicion;
+                    descripcion.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                    descripcion.Name = "label" + labels.ToString();
+                    panel2.Controls.Add(descripcion);
+                    labels++;
+                    v += 15;
+                    listaUsados.Add("" + aPalabra[(nNumerosUsados[nGraphics]) - 1]); //Añadimos directamente a la lista con el indice apuntador
+                    apuntador++;
+                }
+            }
+            }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        }
+}
+

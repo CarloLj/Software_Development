@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BancoMamalonModelStoreContainer" CdmEntityContainer="BancoMamalonEntities2">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+          <ScalarProperty Name="N_Cuenta" ColumnName="N_Cuenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consulta">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Consulta">
+        <MappingFragment StoreEntitySet="Consulta">
+          <ScalarProperty Name="id_Consulta" ColumnName="id_Consulta" />
+          <ScalarProperty Name="N_Folio" ColumnName="N_Folio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deposito">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Deposito">
+        <MappingFragment StoreEntitySet="Deposito">
+          <ScalarProperty Name="id_Deposito" ColumnName="id_Deposito" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="N_Folio" ColumnName="N_Folio" />
+          <ScalarProperty Name="N_Cuenta" ColumnName="N_Cuenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gerente">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Gerente">
+        <MappingFragment StoreEntitySet="Gerente">
+          <ScalarProperty Name="N_Empleado" ColumnName="N_Empleado" />
+          <ScalarProperty Name="N_Cuenta" ColumnName="N_Cuenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Retiro">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Retiro">
+        <MappingFragment StoreEntitySet="Retiro">
+          <ScalarProperty Name="id_Retiro" ColumnName="id_Retiro" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="N_Folio" ColumnName="N_Folio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Transaccion">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Tipo_Transaccion">
+        <MappingFragment StoreEntitySet="Tipo_Transaccion">
+          <ScalarProperty Name="id_Tipo_transaccion" ColumnName="id_Tipo_transaccion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transaccion">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Transaccion">
+        <MappingFragment StoreEntitySet="Transaccion">
+          <ScalarProperty Name="N_Folio" ColumnName="N_Folio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="N_Cuenta" ColumnName="N_Cuenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="BancoMamalonModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="N_Cuenta" ColumnName="N_Cuenta" />
+          <ScalarProperty Name="P_Nombre" ColumnName="P_Nombre" />
+          <ScalarProperty Name="S_Nombre" ColumnName="S_Nombre" />
+          <ScalarProperty Name="P_Apellido" ColumnName="P_Apellido" />
+          <ScalarProperty Name="S_Apellido" ColumnName="S_Apellido" />
+          <ScalarProperty Name="NIP_ENCRYPTED" ColumnName="NIP_ENCRYPTED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

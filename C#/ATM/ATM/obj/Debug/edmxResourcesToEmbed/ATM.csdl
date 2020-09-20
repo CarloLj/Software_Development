@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ATMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id_Cliente" />
+    </Key>
+    <Property Name="id_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="N_Cuenta" Type="Int32" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__N_Cuent__398D8EEE" FromRole="Cliente" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Consulta">
+    <Key>
+      <PropertyRef Name="id_Consulta" />
+    </Key>
+    <Property Name="id_Consulta" Type="Int32" Nullable="false" />
+    <Property Name="N_Folio" Type="Int32" />
+    <NavigationProperty Name="Transaccion" Relationship="Self.FK__Consulta__N_Foli__4BAC3F29" FromRole="Consulta" ToRole="Transaccion" />
+  </EntityType>
+  <EntityType Name="Deposito">
+    <Key>
+      <PropertyRef Name="id_Deposito" />
+    </Key>
+    <Property Name="id_Deposito" Type="Int32" Nullable="false" />
+    <Property Name="monto" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="N_Folio" Type="Int32" />
+    <Property Name="N_Cuenta" Type="Int32" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Deposito__N_Cuen__48CFD27E" FromRole="Deposito" ToRole="Usuario" />
+    <NavigationProperty Name="Transaccion" Relationship="Self.FK__Deposito__N_Foli__47DBAE45" FromRole="Deposito" ToRole="Transaccion" />
+  </EntityType>
+  <EntityType Name="Gerente">
+    <Key>
+      <PropertyRef Name="N_Empleado" />
+    </Key>
+    <Property Name="N_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="N_Cuenta" Type="Int32" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Gerente__N_Cuent__3C69FB99" FromRole="Gerente" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Retiro">
+    <Key>
+      <PropertyRef Name="id_Retiro" />
+    </Key>
+    <Property Name="id_Retiro" Type="Int32" Nullable="false" />
+    <Property Name="monto" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="N_Folio" Type="Int32" />
+    <NavigationProperty Name="Transaccion" Relationship="Self.FK__Retiro__N_Folio__44FF419A" FromRole="Retiro" ToRole="Transaccion" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Transaccion">
+    <Key>
+      <PropertyRef Name="id_Tipo_transaccion" />
+    </Key>
+    <Property Name="id_Tipo_transaccion" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Transaccion" Relationship="Self.FK__Transaccio__Tipo__412EB0B6" FromRole="Tipo_Transaccion" ToRole="Transaccion" />
+  </EntityType>
+  <EntityType Name="Transaccion">
+    <Key>
+      <PropertyRef Name="N_Folio" />
+    </Key>
+    <Property Name="N_Folio" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="Time" Precision="7" />
+    <Property Name="Tipo" Type="Int32" />
+    <Property Name="N_Cuenta" Type="Int32" />
+    <NavigationProperty Name="Consulta" Relationship="Self.FK__Consulta__N_Foli__4BAC3F29" FromRole="Transaccion" ToRole="Consulta" />
+    <NavigationProperty Name="Deposito" Relationship="Self.FK__Deposito__N_Foli__47DBAE45" FromRole="Transaccion" ToRole="Deposito" />
+    <NavigationProperty Name="Retiro" Relationship="Self.FK__Retiro__N_Folio__44FF419A" FromRole="Transaccion" ToRole="Retiro" />
+    <NavigationProperty Name="Tipo_Transaccion" Relationship="Self.FK__Transaccio__Tipo__412EB0B6" FromRole="Transaccion" ToRole="Tipo_Transaccion" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Transacci__N_Cue__4222D4EF" FromRole="Transaccion" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="N_Cuenta" />
+    </Key>
+    <Property Name="N_Cuenta" Type="Int32" Nullable="false" />
+    <Property Name="P_Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="S_Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="P_Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="S_Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="NIPP" Type="Binary" MaxLength="800" FixedLength="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__N_Cuent__398D8EEE" FromRole="Usuario" ToRole="Cliente" />
+    <NavigationProperty Name="Deposito" Relationship="Self.FK__Deposito__N_Cuen__48CFD27E" FromRole="Usuario" ToRole="Deposito" />
+    <NavigationProperty Name="Gerente" Relationship="Self.FK__Gerente__N_Cuent__3C69FB99" FromRole="Usuario" ToRole="Gerente" />
+    <NavigationProperty Name="Transaccion" Relationship="Self.FK__Transacci__N_Cue__4222D4EF" FromRole="Usuario" ToRole="Transaccion" />
+  </EntityType>
+  <Association Name="FK__Cliente__N_Cuent__398D8EEE">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="N_Cuenta" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="N_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consulta__N_Foli__4BAC3F29">
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="0..1" />
+    <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaccion">
+        <PropertyRef Name="N_Folio" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="N_Folio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Deposito__N_Cuen__48CFD27E">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Deposito" Type="Self.Deposito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="N_Cuenta" />
+      </Principal>
+      <Dependent Role="Deposito">
+        <PropertyRef Name="N_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Deposito__N_Foli__47DBAE45">
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="0..1" />
+    <End Role="Deposito" Type="Self.Deposito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaccion">
+        <PropertyRef Name="N_Folio" />
+      </Principal>
+      <Dependent Role="Deposito">
+        <PropertyRef Name="N_Folio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Gerente__N_Cuent__3C69FB99">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Gerente" Type="Self.Gerente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="N_Cuenta" />
+      </Principal>
+      <Dependent Role="Gerente">
+        <PropertyRef Name="N_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Retiro__N_Folio__44FF419A">
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="0..1" />
+    <End Role="Retiro" Type="Self.Retiro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaccion">
+        <PropertyRef Name="N_Folio" />
+      </Principal>
+      <Dependent Role="Retiro">
+        <PropertyRef Name="N_Folio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transaccio__Tipo__412EB0B6">
+    <End Role="Tipo_Transaccion" Type="Self.Tipo_Transaccion" Multiplicity="0..1" />
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Transaccion">
+        <PropertyRef Name="id_Tipo_transaccion" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="Tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacci__N_Cue__4222D4EF">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="N_Cuenta" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="N_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ATMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Consulta" EntityType="Self.Consulta" />
+    <EntitySet Name="Deposito" EntityType="Self.Deposito" />
+    <EntitySet Name="Gerente" EntityType="Self.Gerente" />
+    <EntitySet Name="Retiro" EntityType="Self.Retiro" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tipo_Transaccion" EntityType="Self.Tipo_Transaccion" />
+    <EntitySet Name="Transaccion" EntityType="Self.Transaccion" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Cliente__N_Cuent__398D8EEE" Association="Self.FK__Cliente__N_Cuent__398D8EEE">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consulta__N_Foli__4BAC3F29" Association="Self.FK__Consulta__N_Foli__4BAC3F29">
+      <End Role="Transaccion" EntitySet="Transaccion" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Deposito__N_Cuen__48CFD27E" Association="Self.FK__Deposito__N_Cuen__48CFD27E">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Deposito" EntitySet="Deposito" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Deposito__N_Foli__47DBAE45" Association="Self.FK__Deposito__N_Foli__47DBAE45">
+      <End Role="Transaccion" EntitySet="Transaccion" />
+      <End Role="Deposito" EntitySet="Deposito" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Gerente__N_Cuent__3C69FB99" Association="Self.FK__Gerente__N_Cuent__3C69FB99">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Gerente" EntitySet="Gerente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Retiro__N_Folio__44FF419A" Association="Self.FK__Retiro__N_Folio__44FF419A">
+      <End Role="Transaccion" EntitySet="Transaccion" />
+      <End Role="Retiro" EntitySet="Retiro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transaccio__Tipo__412EB0B6" Association="Self.FK__Transaccio__Tipo__412EB0B6">
+      <End Role="Tipo_Transaccion" EntitySet="Tipo_Transaccion" />
+      <End Role="Transaccion" EntitySet="Transaccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacci__N_Cue__4222D4EF" Association="Self.FK__Transacci__N_Cue__4222D4EF">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Transaccion" EntitySet="Transaccion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

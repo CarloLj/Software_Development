@@ -1,0 +1,25 @@
+Warning[205] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 1 : Found directive in column 1. (list)
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPLABX\V3.55\MPASMX\P16F877.INC 34 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Warning[205] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 3 : Found directive in column 1. (__CONFIG)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 10 : Found label after column 1. (INICIO)
+Message[302] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 20 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 22 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 24 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 26 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 28 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 77 : Found label after column 1. (INTER)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 127 : Found label after column 1. (TIME)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 130 : Found label after column 1. (Pacuya)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 133 : Found label after column 1. (Paca)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 136 : Found label after column 1. (Aca)
+Message[305] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 137 : Using default destination of 1 (file).
+Message[305] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 139 : Using default destination of 1 (file).
+Message[305] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 141 : Using default destination of 1 (file).
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 150 : Found label after column 1. (TIME2)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 153 : Found label after column 1. (Pacuya2)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 156 : Found label after column 1. (Paca2)
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 159 : Found label after column 1. (Aca2)
+Message[305] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 160 : Using default destination of 1 (file).
+Message[305] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 162 : Using default destination of 1 (file).
+Message[305] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 164 : Using default destination of 1 (file).
+Warning[207] C:\USERS\DELL\DOWNLOADS\PR·CTICA55.X\INTERRUPCIÛN55.ASM 173 : Found label after column 1. (PANTALLA)

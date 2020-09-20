@@ -1,0 +1,200 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace CruciGramV1._0
+{
+    public partial class Crossword : Form
+    {
+        int contadrr;
+
+        public class Palabra
+        {
+            public int Dificultad = 0;
+            public bool orientacion;
+            public bool activo;
+            public string sPalabra;
+            public string sDefinicion;
+            public int[,] nCoordenadaInicio = new int[600, 600];
+            public int[,] nCoordenadaFin = new int[600, 600];
+            //void Palabra(int a, bool b, char palabra[]);
+        }
+
+        public Crossword(int x)
+        {
+            Palabra constructor = new Palabra();
+            Random random = new Random();
+            InitializeComponent();
+            switch (x)
+            {
+                case 1:
+                    labeldificultad.Text = "Facil";
+                    x = 4;
+                    break;
+
+                case 2:
+                    labeldificultad.Text = "Medio";
+                    int randomNumber = random.Next(6, 8);
+                    x = randomNumber;
+                    break;
+                    
+
+                case 3:
+                    labeldificultad.Text = "Dificil";
+                    int randomNumber1 = random.Next(9, 19);
+                    x = randomNumber1;
+                    break;
+
+                default:break;
+            }
+            generarCrucigramas(x);
+            x = 0;
+        }
+
+        private void Crossword_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void generarCrucigramas(int difficulty)
+        {
+            Palabra[] aPalabra = new Palabra[100]; //Generamos un arreglo de objetos palabra
+            int[] nNumerosUsados = new int[100];
+            int tamaño = 0, x = 0, y = 0, conteo = 1, labels = 1, h = 1,v=1, nAGenerar = 0, difficulty_=difficulty; //variables en uso
+            int indice = 0; //Numero total de palabras
+            
+            ///////////////////////////////////LEEMOS NUESTRO ARCHIVO DE TEXTO Y GUARDAMOS TODOS SUS ATRIBUTOS EN EL ARREGLO DE OBJETO PALABRA//////////////////////////
+            using (StreamReader leer = new StreamReader(@"C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\CruciGramV1.0\CruciGramV1.0\Resources\diccionario.txt"))
+            {
+                while (!leer.EndOfStream) //lo repetira hasta el final del archivo
+                {
+                    string str = leer.ReadLine();
+                    String[] separator = { "," }; //Aqui definimos el seaprador
+                    Int32 count = 3; //Contamos 3 separaciones para ejecutar el stringlist
+                    String[] strlist = str.Split(separator, count, StringSplitOptions.RemoveEmptyEntries); //Partimos el string leido anteriormente
+                    /////////////////////////////SE LEEN LAS palabras, definicion y dificultad Y SE GUARDAN POR UN INDICE//////////////////////////////
+                    aPalabra[indice] = new Palabra();
+                    aPalabra[indice].sPalabra = strlist[0]; //Guardamos el atributo palabra en el arreglo de palabras en la posicion indice
+                    aPalabra[indice].sDefinicion = strlist[1]; //Guardamos el atributo defnicion en el arreglo de palabras en la posicion indice
+                    aPalabra[indice].Dificultad = Int32.Parse(strlist[2]); //Guardamos el atributo dificultad en el arreglo de palabras en la posicion indice
+                    aPalabra[indice].activo = false; //Definimos la orientacion por defecto en horizontal false = horizontal true = vertical
+                    indice++; //Incrementamos el indice para ir guardando palabra por palabra leida
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                }
+                leer.Close();
+            }
+
+            /*
+            for (int r = 0; r <= indice; r++)
+            {
+                int randomNumber;
+                do{
+
+                randomNumber = random.Next(1, indice); //generamos un numero random por primera vez
+
+                }while(nNumerosUsados.Contains(randomNumber));
+                nNumerosUsados[r] = randomNumber;
+            }
+            */
+            Random random = new Random();
+            for (int r = 0; r < indice; r++)
+            {
+                int randomNumber = random.Next(1, indice+1);//generamos un numero random por primera vez
+                if (!nNumerosUsados.Contains(randomNumber))
+                {
+                    nNumerosUsados[r] = randomNumber;
+                }
+                else {
+                    r--;
+                }
+            }
+            
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                //Agrega 5 numeros aleatorios de posiciones al arreglo de numeros usados "nNumerosUsados[]" asegurando que no se repetira ningun numero
+                /*for (int facil = 0; facil <= difficulty_; facil++)
+                { //Repite el ciclo 5 veces para generar solamente esas numeros random de acuerdo a la dificultad. 
+                    int randomNumber = random.Next(0, indice + 1); //generamos un numero random por primera vez
+                    //for(int nVerificarNumeroFacil =  0; nVerificarNumeroFacil < facil+1; nVerificarNumeroFacil++){ //Hacemos un for que verifique conforme va aumentando nuestro numero de palabras generadas de forma dinamica hasta que en todos los guardados ya no hayan repetidos.
+                    //if (nNumerosUsados[nVerificarNumeroFacil]==randomNumber){ //Verificamos si se repite el numero aleatorio en algun momento
+                    //do{                                                     
+                    //  int randomNumber2 = random.Next(0, indice); //generamos otro numero
+                    //  MessageBox.Show("Se repitio un numero random que cagadisimo jajaja");
+                    //}while(nNumerosUsados[nVerificarNumeroFacil]==randomNumber); //Si se repite generamos otro numero random hasta que sea diferente
+                    // nNumerosUsados[facil] = randomNumber2; //Si ya es difetente guardamos el numero random
+                    //}
+                    nNumerosUsados[facil] = randomNumber; //Guardamos directamente el numero random
+                    //}
+                }
+                 */
+
+                //VERIFICAMOS SI NUESTRA PALABRA YA SE HABIA REPETIDO BUSCANDO DE UNA POR UNA ASEGURANDO QUE LA PALABRA NO SE REPETIRA
+     
+                    for (int z = 0; z <= difficulty_; z++)
+                    {
+                        Label descripcion = new Label();
+                        descripcion.Width = 250;
+                        descripcion.Height = 15;
+                        descripcion.Location = new Point(1, h);
+                        descripcion.Text = "" + aPalabra[(nNumerosUsados[z])-1].sDefinicion;
+                        descripcion.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                        descripcion.Name = "label" + labels.ToString();
+                        panel3.Controls.Add(descripcion);
+                        labels++;
+                        h += 15;
+
+                        tamaño = aPalabra[nNumerosUsados[z]-1].sPalabra.Length;
+                        for (int a = 0; a < tamaño; a++)
+                        {
+                            TextBox letra = new TextBox();
+                            letra.Width = 15;
+                            letra.Height = 15;
+                            letra.Location = new Point(x, y);
+                            letra.Text ="" + aPalabra[(nNumerosUsados[z])-1].sPalabra[a];
+                            letra.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                            letra.Name = "textBox" + contadrr.ToString();
+                            panel1.Controls.Add(letra);
+                            contadrr++;
+                            // MessageBox.Show("Letra " + aPalabra[z].sPalabra[a]);
+                            x += 15;
+                        }
+                        //y += 15;
+                    }
+
+                    //Agrega todas las descripciones en z
+                    for (int z = 0; z <= difficulty_; z++)
+                    {
+                        Label descripcion = new Label();
+                        descripcion.Width = 250;
+                        descripcion.Height = 15;
+                        descripcion.Location = new Point(1, v);
+                        descripcion.Text =z+1 + ".- "+ aPalabra[nNumerosUsados[z]-1].sDefinicion;
+                        descripcion.Font = new Font("Tahoma", 5, FontStyle.Bold);
+                        descripcion.Name = "label" + labels.ToString();
+                        panel2.Controls.Add(descripcion);
+                        labels++;
+                        v += 15;
+                    }
+                }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        }
+}
+

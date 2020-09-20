@@ -1,0 +1,35 @@
+avion,Aeroplano,1
+barco,Nave maritima,1
+taza,Recipiente para cafe,1
+silla,Mueble que suele tener un respaldo sirve como asiento,1
+mujer,Ser humano dificil de entender,1
+amigo,Persona(no necesariamente familiar) que te apoya en todo,1
+matrimonio,Cosa maldita para los hombres,1
+amor,El motor de una persona para su vida,1
+boca,Cavidad bucal,1
+diente,Organo anatómico duro ubicado en la mandibula,1
+cara,Parte frontal de la cabeza,1
+corazon,Organo principal del aparato circulatorio,1
+sangre,Tejido conectivo liquido,1
+piel,Organo mas grande del cuerpo humano,1
+nuez,Fruto seco,1
+almendra,Fruto seco,1
+arbol,Planta de tronco de madera,1
+flor,Detalle que las mujeres adoran,1
+gaseosa,Bebida con gas azucar y saborizantes,1
+hora,Periodo de tiempo conformado en 60 minutos,1
+foco,Elemento optico para proyectar luz,2
+sion,Ciudad biblica,2
+murcielago,Coleoptero,2
+celular,Dispositivo electronico para llamar, 1
+tableta,Dispositivo electronico con gran pantalla,1
+multimetro,Dispositivo electronico para electronicos,2
+chancla,Con lo que tu mama te pegaba de niño,1
+trailer,Vehiculo terrestre de grandes dimensiones,2
+rompecabezas,Te rompe la cabeza,2
+calculadora,Computadora de bolsillo capaz de realizar operaciones,1
+puerta,Permite o no la entrada a un lugar,2 
+llave,instrumento usado para accionar las cerraduras,1
+electrocardiograma,Gráfico con los movimientos del corazón,2
+electrodomestico,Aparato electrico que se utiliza en el hogar,2
+paralelepipedo,Solido limitado por seis paralelogramos,3

@@ -1,0 +1,86 @@
+; ETIQUETAS 	MNEMONICOS	ARGUMENTOS 	COMENTARIOS
+	MOV	P1, #33H;
+	MOV 	R6, #25H;
+AQUI:	JNB	P3.4, AQUI;	Espera un 1
+	DJNZ	R6,AQUI;	
+	MOV	A, P3;
+	CLR	A.7;
+	CLR	A.6;
+	CLR	A.5;
+	CLR 	A.4;
+	MOV	R0, A;
+	MOV	P1, A;
+	MOV 	R6, #020H;
+AQUI2:	JB	P3.4, AQUI2;	Espera un 0
+	DJNZ	R6,AQUI2;
+	MOV	A, P3;
+	CLR	A.7;
+	CLR	A.6;
+	CLR	A.5;
+	CLR 	A.4;
+	MOV	R1, A;
+	MOV	P1, A;
+	MOV 	R6, #020H;
+AQUI3:	JNB	P3.4, AQUI3;	Espera un 1
+	DJNZ	R6,AQUI3;
+	MOV	A, P3;
+	CLR	A.7;
+	CLR	A.6;
+	CLR	A.5;
+	CLR 	A.4;
+	MOV	R2, A;
+	MOV	P1, A;
+	MOV 	R6, #020H;
+AQUI4:	JB	P3.4,AQUI4;	Espera un 0
+	DJNZ	R6,AQUI4;
+	MOV	A,R0;
+	MOV	0F0H, R0;
+	MUL	AB;
+	MOV	0F0H, #03H;
+	MUL	AB;
+	MOV	R3, A;		Almacena en R3 (1+2)A^2
+	MOV	P1, A;
+	MOV 	R6, #020H;
+AQUI5:	JNB	P3.4,AQUI5;	Muestra R3; Espera un 1
+	DJNZ	R6,AQUI5
+	MOV	0F0H, #05H;
+	MOV	A,R1;
+	MUL	AB;
+	MOV	P1,A;	MUESTRA 5B
+	MOV 	R6, #020H;
+AQUIL:	JB	P3.4,AQUIL;	Muestra R3; Espera un 0
+	DJNZ	R6,AQUIL
+	MOV 	R4, A;		Almacena en R4 5B;
+	MOV	A, R3;
+	SUBB	A,R4;		Almacena en Acc 3A^2 - 5B
+	MOV	P1,A;
+	MOV 	R6, #020H;
+AQUI6:	JNB	P3.4,AQUI6;	Muestra el resultado parcial 3A^2 - 5B Espera un 1
+	DJNZ	R6,AQUI6
+	MOV	0F0H, R2;
+	DIV	AB;
+	MOV	R5, A;
+	MOV 	P1,A;		Muestra el resultado de la ecuación
+;	FASE 2: MOVER A MEMORIA EXTERNA
+	MOV	DPTR, #2000H;
+	MOV 	A, R0;
+	MOV 	R6, #25H;
+CICLO:	MOVX	@DPTR, A;
+	DJNZ	R6,CICLO;
+	MOV	DPTR, #2001H;
+	MOV 	A, R1;
+	MOV 	R6, #25H;
+CICLO1:	MOVX	@DPTR, A;
+	DJNZ	R6,CICLO1;
+	MOV	DPTR, #2002H;
+	MOV 	A, R2;
+	MOV 	R6, #25H;
+CICLO2:	MOVX	@DPTR, A;
+	DJNZ	R6,CICLO2;
+	MOV	DPTR, #2003H;
+	MOV 	A, R5;
+	MOV 	R6, #25H;
+CICLO3:	MOVX	@DPTR, A;
+	DJNZ	R6,CICLO3;
+FIN: 	SJMP	FIN;
+END;

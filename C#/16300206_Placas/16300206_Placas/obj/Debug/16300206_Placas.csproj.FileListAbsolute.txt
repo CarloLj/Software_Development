@@ -1,0 +1,6 @@
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Placas\16300206_Placas\bin\Debug\16300206_Placas.exe.config
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Placas\16300206_Placas\bin\Debug\16300206_Placas.exe
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Placas\16300206_Placas\bin\Debug\16300206_Placas.pdb
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Placas\16300206_Placas\obj\Debug\16300206_Placas.exe
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Placas\16300206_Placas\obj\Debug\16300206_Placas.pdb
+C:\Users\carlo\OneDrive\Documentos\Visual Studio 2012\Projects\16300206_Placas\16300206_Placas\obj\Debug\16300206_Placas.csprojResolveAssemblyReference.cache

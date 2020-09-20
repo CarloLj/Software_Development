@@ -1,0 +1,680 @@
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (list)
+                      00001 list p=16f877
+                      00002 #include<p16f877.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Jan 30 2017
+                      00005 ;  MPASM PIC16F877 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2017 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+Message[301]: MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+                      00541         LIST
+Warning[205]: Found directive in column 1. (__CONFIG)
+2007   3D32           00003 __CONFIG _PWRTE_ON & _WDT_OFF & _CP_OFF & _HS_OSC & _BODEN_OFF & _WRT_OFF & _LVP_OFF & _CPD_OFF 
+                      00004     
+                      00005     ORG 0x00
+0000   2???           00006     GOTO INICIO
+                      00007     ORG 0x04
+0004   2???           00008     GOTO INTER
+                      00009    
+Warning[207]: Found label after column 1. (INICIO)
+0005                  00010     INICIO:
+0005   1303           00011     BCF STATUS,RP1
+0006   1283           00012     BCF STATUS,RP0;     BANCO 0
+0007   0188           00013     CLRF PORTD;         Pantalla
+0008   0189           00014     CLRF PORTE;         RS - E
+0009   0186           00015     CLRF PORTB;         Push-Button
+                      00016     
+000A   1303           00017     BCF STATUS,RP1
+000B   1683           00018     BSF STATUS,RP0;     BANCO 1
+000C   3006           00019     MOVLW 0x06
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000D   009F           00020     MOVWF ADCON1;       PORTE como Digital
+000E   3000           00021     MOVLW 0x00
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   0089           00022     MOVWF TRISE;        PORTE como Salida
+0010   3000           00023     MOVLW 0x00
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0011   0088           00024     MOVWF TRISD;        PORTD como Salida
+0012   30FF           00025     MOVLW 0xFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0013   0086           00026     MOVWF TRISB;        PORTB como Entrada
+                      00027     
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0014   1701           00028     BSF OPTION_REG,INTEDG;
+                      00029     
+0015   178B           00030     BSF INTCON,GIE;     Habilita las Interrupciones Globales
+0016   160B           00031     BSF INTCON,INTE;    Habilita la InterrupciÛn Externa
+0017   108B           00032     BCF INTCON,INTF;    Desactiva la bandera de activaciÛn de la INT
+                      00033     
+0018   1303           00034     BCF STATUS,RP1
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0019   1283           00035     BCF STATUS,RP0;     BANCO 0
+                      00036     
+001A   2???           00037     CALL PANTALLA
+                      00038     
+                      00039     ;********************;
+                      00040     ;* DATOS EN MEMORIA *;
+                      00041     ;********************;
+001B   3003           00042     MOVLW B'11'
+001C   0089           00043     MOVWF PORTE
+001D   3041           00044     MOVLW 'A'
+001E   0088           00045     MOVWF PORTD
+001F   2???           00046     CALL TIME2
+                      00047     
+0020   3003           00048     MOVLW B'11'
+0021   0089           00049     MOVWF PORTE
+0022   304C           00050     MOVLW 'L'
+0023   0088           00051     MOVWF PORTD
+0024   2???           00052     CALL TIME2
+                      00053     
+0025   3003           00054     MOVLW B'11'
+0026   0089           00055     MOVWF PORTE
+0027   3041           00056     MOVLW 'A'
+0028   0088           00057     MOVWF PORTD
+0029   2???           00058     CALL TIME2
+                      00059     
+002A   3003           00060     MOVLW B'11'
+002B   0089           00061     MOVWF PORTE
+002C   304E           00062     MOVLW 'N'
+002D   0088           00063     MOVWF PORTD
+002E   2???           00064     CALL TIME2
+                      00065     
+002F   3003           00066     MOVLW B'11'
+0030   0089           00067     MOVWF PORTE
+0031   3020           00068     MOVLW ' '
+0032   0088           00069     MOVWF PORTD
+0033   2???           00070     CALL TIME2
+                      00071 
+0034   2???           00072     GOTO INICIO
+                      00073     
+                      00074     ;****************;
+                      00075     ;* INTERRUPCI”N *;
+                      00076     ;****************;
+Warning[207]: Found label after column 1. (INTER)
+0035                  00077     INTER:
+0035   2???           00078     CALL PANTALLA
+                      00079     
+0036   3003           00080     MOVLW B'11'
+0037   0089           00081     MOVWF PORTE
+0038   304C           00082     MOVLW 'L'
+0039   0088           00083     MOVWF PORTD
+003A   2???           00084     CALL TIME
+                      00085     
+003B   3003           00086     MOVLW B'11'
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003C   0089           00087     MOVWF PORTE
+003D   304F           00088     MOVLW 'O'
+003E   0088           00089     MOVWF PORTD
+003F   2???           00090     CALL TIME
+                      00091     
+0040   3003           00092     MOVLW B'11'
+0041   0089           00093     MOVWF PORTE
+0042   3050           00094     MOVLW 'P'
+0043   0088           00095     MOVWF PORTD
+0044   2???           00096     CALL TIME
+                      00097     
+0045   3003           00098     MOVLW B'11'
+0046   0089           00099     MOVWF PORTE
+0047   3045           00100     MOVLW 'E'
+0048   0088           00101     MOVWF PORTD
+0049   2???           00102     CALL TIME
+                      00103     
+004A   3003           00104     MOVLW B'11'
+004B   0089           00105     MOVWF PORTE
+004C   305A           00106     MOVLW 'Z'
+004D   0088           00107     MOVWF PORTD
+004E   2???           00108     CALL TIME
+                      00109     
+004F   2???           00110     CALL TIME2
+0050   2???           00111     CALL TIME2
+0051   2???           00112     CALL TIME2
+0052   2???           00113     CALL TIME2
+                      00114     
+0053   3001           00115     MOVLW B'01';        RS=0 (Comandos) , E=1
+0054   0089           00116     MOVWF PORTE;
+0055   3001           00117     MOVLW 0x01;         Display Clear
+0056   0088           00118     MOVWF PORTD;
+0057   2???           00119     CALL TIME;
+                      00120     
+0058   108B           00121     BCF INTCON, INTF
+0059   0009           00122     RETFIE
+                      00123     
+                      00124     ;*********;
+                      00125     ;* 5mSeg *;
+                      00126     ;*********;
+Warning[207]: Found label after column 1. (TIME)
+005A                  00127     TIME:
+005A   3001           00128     MOVLW 0x01;
+005B   00A0           00129     MOVWF 0x20;
+Warning[207]: Found label after column 1. (Pacuya)
+005C                  00130     Pacuya:
+005C   30FA           00131     MOVLW 0xFA;
+005D   00A1           00132     MOVWF 0x21;
+Warning[207]: Found label after column 1. (Paca)
+005E                  00133     Paca:
+005E   300A           00134     MOVLW 0x0A;
+005F   00A2           00135     MOVWF 0x22;
+Warning[207]: Found label after column 1. (Aca)
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0060                  00136     Aca:
+Message[305]: Using default destination of 1 (file).
+0060   0BA2           00137     DECFSZ 0x22;
+0061   2???           00138     GOTO Aca;
+Message[305]: Using default destination of 1 (file).
+0062   0BA1           00139     DECFSZ 0x21;
+0063   2???           00140     GOTO Paca;
+Message[305]: Using default destination of 1 (file).
+0064   0BA0           00141     DECFSZ 0x20;
+0065   2???           00142     GOTO Pacuya;
+0066   3000           00143     MOVLW B'00'
+0067   0089           00144     MOVWF PORTE;        E=0 , RS=0
+0068   0008           00145     RETURN;
+                      00146     
+                      00147     ;***********;
+                      00148     ;* 500mSeg *;
+                      00149     ;***********;
+Warning[207]: Found label after column 1. (TIME2)
+0069                  00150     TIME2:
+0069   3064           00151     MOVLW 0x64;
+006A   00A0           00152     MOVWF 0x20;
+Warning[207]: Found label after column 1. (Pacuya2)
+006B                  00153     Pacuya2:
+006B   30FA           00154     MOVLW 0xFA;
+006C   00A1           00155     MOVWF 0x21;
+Warning[207]: Found label after column 1. (Paca2)
+006D                  00156     Paca2:
+006D   300A           00157     MOVLW 0x0A;
+006E   00A2           00158     MOVWF 0x22;
+Warning[207]: Found label after column 1. (Aca2)
+006F                  00159     Aca2:
+Message[305]: Using default destination of 1 (file).
+006F   0BA2           00160     DECFSZ 0x22;
+0070   2???           00161     GOTO Aca2;
+Message[305]: Using default destination of 1 (file).
+0071   0BA1           00162     DECFSZ 0x21;
+0072   2???           00163     GOTO Paca2;
+Message[305]: Using default destination of 1 (file).
+0073   0BA0           00164     DECFSZ 0x20;
+0074   2???           00165     GOTO Pacuya2;
+0075   3000           00166     MOVLW B'00'
+0076   0089           00167     MOVWF PORTE;        E=0 , RS=0
+0077   0008           00168     RETURN;
+                      00169     
+                      00170     ;******************************;
+                      00171     ;* INICIALIZACI”N DE PANTALLA *;
+                      00172     ;******************************;
+Warning[207]: Found label after column 1. (PANTALLA)
+0078                  00173     PANTALLA:
+0078   3001           00174     MOVLW B'01';        RS=0 (Comandos) , E=1
+0079   0089           00175     MOVWF PORTE;
+007A   3038           00176     MOVLW 0x38;         1∞ Function Set
+007B   0088           00177     MOVWF PORTD;
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+007C   2???           00178     CALL TIME;
+                      00179     
+007D   3001           00180     MOVLW B'01';        RS=0 (Comandos) , E=1
+007E   0089           00181     MOVWF PORTE;
+007F   3038           00182     MOVLW 0x38;         2∞ Function Set
+0080   0088           00183     MOVWF PORTD;
+0081   2???           00184     CALL TIME;
+                      00185     
+0082   3001           00186     MOVLW B'01';        RS=0 (Comandos) , E=1
+0083   0089           00187     MOVWF PORTE;
+0084   3038           00188     MOVLW 0x38;         3∞ Function Set
+0085   0088           00189     MOVWF PORTD;
+0086   2???           00190     CALL TIME;
+                      00191     
+0087   3001           00192     MOVLW B'01';        RS=0 (Comandos) , E=1
+0088   0089           00193     MOVWF PORTE;
+0089   3038           00194     MOVLW 0x38;         Function Set (N y F)
+008A   0088           00195     MOVWF PORTD;
+008B   2???           00196     CALL TIME; 
+                      00197     
+008C   3001           00198     MOVLW B'01';        RS=0 (Comandos) , E=1
+008D   0089           00199     MOVWF PORTE;
+008E   300C           00200     MOVLW 0x0C;         Display ON
+008F   0088           00201     MOVWF PORTD;
+0090   2???           00202     CALL TIME;
+                      00203     
+0091   3001           00204     MOVLW B'01';        RS=0 (Comandos) , E=1
+0092   0089           00205     MOVWF PORTE;
+0093   3001           00206     MOVLW 0x01;         Display Clear
+0094   0088           00207     MOVWF PORTD;
+0095   2???           00208     CALL TIME;
+                      00209     
+0096   3001           00210     MOVLW B'01';        RS=0 (Comandos) , E=1
+0097   0089           00211     MOVWF PORTE;
+0098   3006           00212     MOVLW 0x06;         Entry Mode Set
+0099   0088           00213     MOVWF PORTD;
+009A   2???           00214     CALL TIME;
+                      00215     
+009B   3001           00216     MOVLW B'01';        RS=0 (Comandos) , E=1
+009C   0089           00217     MOVWF PORTE;
+009D   300E           00218     MOVLW 0x0E;         Display ON Control
+009E   0088           00219     MOVWF PORTD;
+009F   2???           00220     CALL TIME;
+                      00221     
+00A0   3001           00222     MOVLW B'01';        RS=0 (Comandos) , E=1
+00A1   0089           00223     MOVWF PORTE;
+00A2   3080           00224     MOVLW 0x80;         Cursor al inicio
+00A3   0088           00225     MOVWF PORTD;
+00A4   2???           00226     CALL TIME;
+00A5   0008           00227     RETURN
+                      00228     
+3D32                  00229     END
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+Aca                               00000060
+Aca2                              0000006F
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRGH                              00000002
+C                                 00000000
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CKE                               00000006
+CKP                               00000004
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+DATA_ADDRESS                      00000005
+DC                                00000001
+D_A                               00000005
+D_NOT_A                           00000005
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INICIO                            00000005
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTER                             00000035
+INTF                              00000001
+IRP                               00000007
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OPTION_REG                        00000081
+P                                 00000004
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PANTALLA                          00000078
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+Paca                              0000005E
+Paca2                             0000006D
+Pacuya                            0000005C
+Pacuya2                           0000006B
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SEN                               00000000
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+SYNC                              00000004
+T0CS                              00000005
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TIME                              0000005A
+TIME2                             00000069
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_ALL                           00000FCF
+_CP_HALF                          00001FDF
+_CP_OFF                           00003FFF
+_CP_UPPER_256                     00002FEF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+MPASM 5.72                INTERRUPCIÛN55.ASM   5-12-2017  9:06:38         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_ENABLE_OFF                   00003DFF
+_WRT_ENABLE_ON                    00003FFF
+_WRT_OFF                          00003DFF
+_WRT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+
+Errors   :     0
+Warnings :    13 reported,     0 suppressed
+Messages :    12 reported,     0 suppressed
+
+

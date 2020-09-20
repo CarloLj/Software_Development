@@ -1,0 +1,18 @@
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\bin\Debug\BuscaImagenes.exe.config
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\bin\Debug\BuscaImagenes.exe
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\bin\Debug\BuscaImagenes.pdb
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.csprojResolveAssemblyReference.cache
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.Form1.resources
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.Properties.Resources.resources
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.csproj.GenerateResource.Cache
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.exe
+c:\users\usuario\documents\visual studio 2012\Projects\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.pdb
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\bin\Debug\BuscaImagenes.exe.config
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.exe
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.pdb
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\bin\Debug\BuscaImagenes.exe
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\bin\Debug\BuscaImagenes.pdb
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.csprojResolveAssemblyReference.cache
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.Form1.resources
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.Properties.Resources.resources
+C:\Users\carlo\Desktop\Carlo CETI\Programacion\BuscaImagenes\BuscaImagenes\obj\Debug\BuscaImagenes.csproj.GenerateResource.Cache
