@@ -1,0 +1,12 @@
+1 1 Yeezy-Zebra 2 20000
+2 1 Yeezy-Black 1 9000
+3 1 Camisa-adidas 10 399
+4 2 CD-ARJONA 10 1000 
+5 2 Xbox-Series-X 8 13000 
+6 2 Playstation-5 8 13000 
+7 3 Mesa-caoba 3 32000
+8 3 Mesa-roble 4 12000
+9 4 Power-Rangers-Muneco-accion 10 233
+10 4 Bakugan-lanzable 15 123
+11 5 Estufa-electrica 12 2000
+12 5 Refrigerador-samsung 3 14000

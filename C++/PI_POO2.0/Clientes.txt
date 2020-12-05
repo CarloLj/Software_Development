@@ -1,0 +1,3 @@
+1 Carlo-Lujan 29 05 2001 Paseo_de_las_aves Mision_del_Bosque 45133 Mexico Zapopan 100000
+2 Ricardo-Gonzalez 30 11 2020 Mariano_Otero RIU 45186 Mexico Gualadalajara 20000
+3 Fabiola-Uribe 01 12 2020 Tec_de_Monterrey Aviacion 45189 Mexico Gualadalajara 1000000

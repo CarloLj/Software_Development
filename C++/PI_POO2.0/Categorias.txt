@@ -1,0 +1,5 @@
+1 Ropa
+2 Electronica
+3 Muebles
+4 Juguetes
+5 Electrodomesticos

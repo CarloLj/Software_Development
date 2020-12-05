@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>AGRI</title>
+  <link rel="shortcut icon" href="https://cdn.iconscout.com/icon/free/png-256/avocado-2505823-2101777.png">	
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ir a inicio</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="acercade.html">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="planeacion.html">Planeacion para cultivo</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="agroplanning.html">AgroPlanning™</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="avosystem.html">AvoSystem™</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h3 class="mt-4 mb-3">AgroPlanning™</h3>
+	<select class="form-control form-control-sm">
+	  <option>Aguacate</option>
+	</select>
+	<br>
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Map Column -->
+
+        <div id="map" style="width: 100%; height: 500px; border: 0;"></div>
+		<br>
+		<script>
+		var map = L.map('map',{ center: [ 19.703487 , -103.4647], zoom: 12});
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+		
+		var panchito = L.polygon([
+		[19.758869, -103.519261], [19.759782, -103.508913],
+		[19.758869, -103.508882],[19.758926, -103.507547],
+		[19.754585, -103.506879],[19.754099, -103.510673],
+		[19.749758, -103.510066],[19.748815, -103.516833],
+		[19.753242, -103.518623]],
+		{color: 'blue', weight: 1}).addTo(map);
+		
+		var francisco = L.polygon([
+		[19.658471, -103.509344], [19.652560, -103.509659],
+		[19.652634, -103.513257],[19.656963, -103.513336],
+		[19.657779, -103.511550],[19.658447, -103.511314]],
+		{color: 'blue', weight: 1}).addTo(map);
+		
+		var ximena = L.polygon([
+		[19.615636, -103.468549], [19.615740, -103.465589],
+		[19.610622, -103.465678],[19.610538, -103.468615]],
+		{color: 'blue', weight: 1}).addTo(map);
+		
+		var pacheco = L.polygon([
+		[19.610558, -103.477676], [19.615389, -103.477354],
+		[19.615591, -103.472741],[19.617350, -103.472526],
+		[19.618825, -103.472419],[19.620705, -103.471518],
+		[19.620367, -103.473324],[19.616931, -103.478881],
+		[19.616203, -103.479182],[19.615374, -103.478559],
+		[19.611493, -103.478989],[19.611453, -103.478345],
+		[19.610665, -103.478452]
+		],
+		{color: 'blue', weight: 1}).addTo(map);
+		
+		var francisca = L.polygon([
+		[19.629737, -103.514807], [19.628779, -103.513876],
+		[19.628914, -103.513504],[19.628603, -103.513174],
+		[19.628361, -103.513403],[19.627700, -103.512687],
+		[19.628711, -103.509494],[19.629912, -103.510382],
+		[19.630532, -103.511141],[19.631517, -103.512215]
+		],
+		{color: 'blue', weight: 1}).addTo(map);
+		
+		var myArea = L.polygon([
+		[19.700520, -103.451202], [19.69, -103.44794836],
+		[19.688, -103.441743], [19.687, -103.435],[19.692630, -103.432214],[19.692806, -103.428229],[19.700479, -103.427298],
+		[19.703850, -103.430727], [19.704736, -103.442440]],
+		{color: 'blue', weight: 1}).addTo(map);
+		
+		var agriego = L.polygon([
+		[19.682782, -103.587467], [19.674436, -103.567813],[19.658832, -103.559720], [19.642500, -103.538140],
+		[19.627256, -103.523881],[19.647219, -103.504998],[19.674073, -103.493052],
+		[19.689313, -103.493437],[19.707091, -103.503822],
+		[19.719788, -103.487637],[19.733936, -103.457598],[19.760776, -103.451817],[19.785618, -103.466688],[19.794245, -103.503154],
+		[19.770312, -103.536681],[19.753266, -103.550555],[19.733317, -103.552289],[19.699422, -103.577534]],
+		{color: 'green', weight: 1}).addTo(map);
+		
+		var zona2 = L.polygon([
+		[19.682782, -103.587467], [19.674436, -103.567813],[19.658832, -103.559720], [19.642500, -103.538140],
+		[19.627256, -103.523881],[19.647219, -103.504998],[19.674073, -103.493052]],
+		{color: 'FFFF', weight: 1}).addTo(map);
+		
+		// Create an Empty Popup
+		var popup = L.popup();
+
+		// Write function to set Properties of the Popup
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("La coordenada de esta zona es:  " + e.latlng.toString())
+				.openOn(map);
+		}
+
+		// Listen for a click event on the Map element
+		map.on('click', onMapClick);
+
+		
+		myArea.bindPopup("Area protegida");
+		agriego.bindPopup("ALTA COINCIDENCIA <br>-Terreno muy fertil <br> -Zonas de seguridad media <br> -Zonas con temperaturas cálidas<br>-Baja probabilidad de lluvia");
+		zona2.bindPopup("ALTA COINCIDENCIA <br>-Terreno fertil <br> -Zonas de seguridad alta<br> -Zonas con temperaturas cálidas<br>-Baja probabilidad de lluvia");
+		ximena.bindPopup("MEDIA COINCIDENCIA <br>-Terreno poco fertil <br> -Zonas de seguridad alta<br> -Baja humedad en la zona<br>-Vientos fuertes direccion sur<br>-Baja probabilidad de lluvia");
+		pacheco.bindPopup("MEDIA COINCIDENCIA <br>-Terreno medio fertil <br> -Zonas de seguridad alta<br> -Alta humedad en la zona<br>-Vientos fuertes direccion sur<br>-Baja probabilidad de lluvia");
+		francisca.bindPopup("ALTA COINCIDENCIA <br>-Terreno muy fertil <br> -Zonas de seguridad alta<br> -Alta humedad en la zona<br>-Vientos debiles<br>-Alta proabilidad de lluvia");
+		</script>
+    </div>
+  </div>
+  <br>
+  <br>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; AGRI MX SOLUTIONS 2020-2021</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Contact form JavaScript -->
+  <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+</body>
+
+</html>
